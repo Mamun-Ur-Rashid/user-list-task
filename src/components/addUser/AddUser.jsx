@@ -1,15 +1,21 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm} from 'react-hook-form';
 
 const AddUser = () => {
+    const [ newUser, setNewUser ] = useState('');
+    console.log(newUser);
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
-    const onSubmit = data => console.log(data)
+    const onsubmit = (data) => {
+        setNewUser(data);
+        console.log(data);
+        reset();
+    } 
 
 
     return (
         <div className='my-10 mx-5 rounded-lg border-gray-600 border p-4'>
             <h2 className='text-2xl font-bold text-center justify-start items-center mb-10'> Add User</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className=''>
+            <form onSubmit={handleSubmit(onsubmit)} className=''>
                 <div className='grid grid-cols-2 md:grid-cols-4'>
                     <div className="mb-2">
                         <label htmlFor="firstName" className=" text-sm font-medium text-gray-600">

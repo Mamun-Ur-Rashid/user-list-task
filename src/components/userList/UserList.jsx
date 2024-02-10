@@ -48,6 +48,14 @@ const UserList = () => {
         setFinalUsers(sortedUsers);
     }, [users, searchText, sortOption]);
 
+    const handleAddUser = (FormData) => {
+        const newUser = {
+            id: users.length + 1,
+            ...FormData,
+        };
+        setUsers([...users, newUser]);
+    }
+
     return (
         <div className='md:px-10 my-10'>
             <div className='flex md:flex-row justify-between bg-slate-400 p-2 rounded-lg gap-4'>
